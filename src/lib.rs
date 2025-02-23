@@ -1,13 +1,13 @@
 /// State initialization constant ("expand 32-byte k")
 const CONSTANTS: [u32; 4] = [0x6170_7865, 0x3320_646e, 0x7962_2d32, 0x6b20_6574];
 
-pub struct ChacCha20 {
+pub struct ChaCha20 {
     key: [u8;32],
     nonce: [u8; 12],
     block: u32,
 }
 
-impl ChacCha20 {
+impl ChaCha20 {
     pub fn new(key: String, nonce: &[u8]) -> Self {
         let mut safe_nonce: [u8; 12] = [0; 12];
         for n in 0..12.min(nonce.len()) {
@@ -172,7 +172,7 @@ mod tests {
         let keybyte: [u8;32] = [0x00,0x01,0x02,0x03,0x04,0x05,0x06,0x07,0x08,0x09,0x0a,0x0b,0x0c,0x0d,0x0e,0x0f,0x10,0x11,0x12,0x13,0x14,0x15,0x16,0x17,0x18,0x19,0x1a,0x1b,0x1c,0x1d,0x1e,0x1f];
         let nonce: [u8;12] = [0x00,0x00,0x00,0x09,0x00,0x00,0x00,0x4a,0x00,0x00,0x00,0x00];
         
-        let mut chacha = ChacCha20{
+        let mut chacha = ChaCha20{
             key: keybyte,
             nonce,
             block: 1,
@@ -195,7 +195,7 @@ mod tests {
         let nonce: [u8;12] = [0x00,0x00,0x00,0x09,0x00,0x00,0x00,0x4a,0x00,0x00,0x00,0x00];
         let mut out: [u32; 16] = [0; 16];
         
-        let mut chacha = ChacCha20{
+        let mut chacha = ChaCha20{
             key: keybyte,
             nonce,
             block: 1,
@@ -221,7 +221,7 @@ mod tests {
         let nonce: [u8;12] = [0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x4a,0x00,0x00,0x00,0x00];
         let mut out: [u32; 16] = [0; 16];
         
-        let mut chacha = ChacCha20{
+        let mut chacha = ChaCha20{
             key: keybyte,
             nonce,
             block: 1,
@@ -247,7 +247,7 @@ mod tests {
         let nonce: [u8; 12] = [0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x4a,0x00,0x00,0x00,0x00];
         let mut out: [u32; 16] = [0; 16];
         
-        let mut chacha = ChacCha20{
+        let mut chacha = ChaCha20{
             key: keybyte,
             nonce,
             block: 2,
